@@ -63,3 +63,50 @@ But knowing that the main purpose of ownership is to manage heap data can help e
 
 - A scope is the range within a program for which an item is valid.
 
+
+References and Borrowing
+
+A reference is like a pointer, in that its an address we can follow to access the data stored at that address; that data is owned by some other variable. 
+
+Unlike a pointer, a reference is guaranteed to point to a valid value of a particular type for the life of that reference.
+
+The ampersands represent reference, i.e instead of;
+
+let len = calculate_length(s1); // we instead use the below code
+let len = calculate_length(&s1) // with & representing the reference. 
+
+even at the level of the function declearation you also need to precise that you will be receiving a reference. 
+i.e 
+calculate_length(s:&String) -> usize {
+    s.len()
+}
+
+An analogy of this can be a limited liabilty company.  if you borrow moeny for your company and then the company crashes, they cannot sew you because you do not have ownership, you are limited by liability.
+
+Just like variables functions are immutable by default but we can always make them mutable similar to adding the mut ie. &mut s1
+
+
+How ever mutable references have one big restriction; 
+
+if you have a mutable reference to a value, you can have no other references to that value. 
+
+So you can have one and only mutable reference to a variable.  
+
+
+This helps to prevent data races at compile time. 
+
+A data race is similar to a race conditon and happens when these behaviours occur;
+
+- two or more pointers access the same data at the same time.
+- at least one of the pointers is being used to write to the data. 
+- there is no mechanims being used to synchronize access to the data.
+
+
+Data races cause undefined behaviour and can be defficult to diagnise and fix when your trying to track them down at run time.
+rust prevents this problem by refusing to compile code with data races. 
+
+
+However, we can actually use curly braces to create a new scope, allowinf multiple mutable references, just not simultaneous ones. 
+since one goes out of scope when the curly brace ends, it makes sense that we can create others should we want to do just that. 
+
+
