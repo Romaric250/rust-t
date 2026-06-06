@@ -109,4 +109,12 @@ rust prevents this problem by refusing to compile code with data races.
 However, we can actually use curly braces to create a new scope, allowinf multiple mutable references, just not simultaneous ones. 
 since one goes out of scope when the curly brace ends, it makes sense that we can create others should we want to do just that. 
 
+Dangling references
 
+In languages with pointers, its easy to erroneously create a dangling pointer - a pointer that references a location in memory that have been given to someone else - by freeing some memory while preserving a pointer to that memory.
+
+In rust, the compiler guarantees that references will never be dangling references. the compiler ensures that if you have a reference data, the compiler will ensure that the daya will not go out of scope before the reference to the data does.
+
+
+
+Rust prevent these dangling references with a compile time error.
