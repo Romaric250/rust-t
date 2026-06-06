@@ -61,4 +61,5 @@ But knowing that the main purpose of ownership is to manage heap data can help e
 
     Variable scope
 
-    
+- A scope is the range within a program for which an item is valid.
+
