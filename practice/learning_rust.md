@@ -114,9 +114,6 @@ A statement does not evaluate to a value.
 
 Does not evalaute to a vaule, it always ends with a semi column. 
 
-
-
-
 Diving deeper into;
 
 tuples, 
@@ -127,5 +124,13 @@ arrrays
 
 Tuples
 
+
 units are empty tuples, they are used in function calls. 
 
+they are very important and we will see them later on as we move
+
+
+
+Chapter 4, Understanding Ownership
+
+Ownership is rust's most unique feature and has deep implications for the rests of the language. it enables rust to make memory safety guarantees without needing a garbage collector, so its important to understand how ownership works. 

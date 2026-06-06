@@ -1,0 +1,64 @@
+Chapter 4. Ownership
+
+Ownership is Rust's most unique feature and has deep implications for the rest of the language. 
+it permits or enables rust to make memory safety guarantess without needing a garbage collector. Therefore its important to understand how ownership works.
+
+
+Ownership  is a set of rules that govern how a rust program manages memory. All programs have to manage the way they use a compoters memory while runing.
+
+Because ownership is a new concept for many programmers, it does take some time to get used to it.
+
+The good news is that that the more experiences you become with rust and the rules of the ownership system the easier you will find it to naturally devlope code that is afe and efficient. 
+
+
+when you understand ownership, you will have a solid foundation for understanding the 
+features that make rust unique. In this chapter, you will leanrd ownership by working through some examples that focus on very common data structure, strings.
+
+
+
+
+The stack and the Heap
+
+THE Stack stores values in the order in which they arrive and removes the values in the opposite order. This is refered to as last in, first out ( LIFO). 
+
+All data stored on the stack must have a known fixed size,. 
+Data with unkown size at compile time must be stored on the heap instead.
+
+
+The Heap;
+
+The heap is less organized; when you put data on the heap, you request a certain amount of space. the memory allocatore finds and empty sport in the heap that hs big enough, marks it as being in use, and returns a pointer which is the address of that location. 
+This is process is called allocating on the heap or just allocating. 
+
+Now because the pointer to the heap is known and now has a fixed size, you can now store the pointer on the stack. 
+
+Pushing to the stack is much faster tha allocating on the heap because the allocatoer never has to search for a place to store new data.
+
+Accessing data on the heap is generally slower because the allocator has to follow the pointer to get there all the time and this is time consuming.
+
+
+Therefore contemporary processors are faster if they jump around less in memory. 
+
+
+
+Keeping track of what parts of the code are using what data on the heap, minimizing the amount of duplicate data on the heap and cleaning unused data on the heap so that you dont run out of space arll problems that ownership addresses. 
+
+Once you understand ownership. you wond need to think about the stack and the heap very often. 
+
+But knowing that the main purpose of ownership is to manage heap data can help explain why it works the way it does.
+ 
+
+
+
+    Ownership rules
+
+
+    - Each value is rust has an owner 
+    - there can only be one owner at a time
+    - when the owner goes out of scope, the value will be dropped.
+
+
+
+    Variable scope
+
+    
